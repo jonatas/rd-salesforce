@@ -1,4 +1,5 @@
-require "rd/salesforce/version"
+require 'rd/salesforce/version'
+require 'rd/salesforce/client'
 
 module Rd
   module Salesforce
