@@ -4,9 +4,10 @@ describe Rd::Salesforce do
       it "allow multiple accounts"
       it "validates input params"
     end
-    describe "uploads" do
+    describe "integrates with salesforce" do
       it "new person"
       it "only valid records"
+      it "only with a valid client"
     end
   end
   describe "person" do
