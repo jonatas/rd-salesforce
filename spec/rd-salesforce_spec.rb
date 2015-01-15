@@ -15,11 +15,15 @@ describe Rd::Salesforce do
       it "allow multiple accounts" do
         auth_client = Rd::Salesforce::Client.new with_oauth
         expect(auth_client).to be_a(Rd::Salesforce::Client)
+
+        second_auth_client = Rd::Salesforce::Client.new with_oauth.merge(host: "serious.host.com")
+        expect(second_auth_client).to be_a(Rd::Salesforce::Client)
       end
       it "validates input params" do
         expect( lambda { Rd::Salesforce::Client.new with_invalid_params }).to raise_error(ArgumentError)
       end
     end
+
     describe "integrates with salesforce" do
       it "new person"
       it "only valid records"
