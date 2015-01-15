@@ -25,8 +25,24 @@ describe Rd::Salesforce do
     end
 
     describe "integrates with salesforce" do
-      it "new person"
-      it "only valid records"
+      let(:valid_attributes) do
+        { name: "Jonatas",
+          last_name: "Paganini",
+          email: "jonatasdp@gmail.com",
+          company: nil,
+          job_title: "Developer",
+          phone: "+55 4699117879",
+          website: "http://ideia.me" }
+      end
+      it "new person" do
+        person = Rd::Salesforce::Person.new valid_attributes
+        expect(person).to be_valid
+        expect(person).to respond_to(:upload_to_salesforce!)
+      end
+      it "only valid records" do
+        person = Rd::Salesforce::Person.new {}
+        expect(person).to_not be_valid
+      end
       it "only with a valid client"
     end
   end
