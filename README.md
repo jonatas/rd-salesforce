@@ -6,7 +6,9 @@ Integrates with salesforce allowing to add people as leads.
 
 Add this line to your application's Gemfile:
 
-    gem 'rd-salesforce', git: "https://github.com/jonatas/rd-salesforce.git"
+```ruby
+gem 'rd-salesforce', git: "https://github.com/jonatas/rd-salesforce.git"
+```
 
 And then execute:
 
@@ -14,14 +16,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rd-salesforce
+    $ gem install rd-salesforce https://github.com/jonatas/rd-salesforce.git
 
 ## Usage
 
 These library consists basically in:
 
-[client.rb](/lib/rd/salesforce/client.rb) - wraps the [RestForce api](https://github.com/ejholmes/restforce) and authentication info.
-[person.rb](/lib/rd/salesforce/person.rb) - stores and validates the person/lead info
+* [client.rb](/lib/rd/salesforce/client.rb) - wraps the [RestForce api](https://github.com/ejholmes/restforce) and authentication info.
+* [person.rb](/lib/rd/salesforce/person.rb) - stores and validates the person/lead info
 
 ### Setup a client
 
@@ -29,27 +31,30 @@ You can use the same [RestForce params to authentication](https://github.com/ejh
 
 
 ```ruby
-client = Rd::Salesforce::Client.new  instance_url: "https://xx.salesforce.com", oauth_token: "xxxxx...."
+@client = Rd::Salesforce::Client.new instance_url: "https://xx.salesforce.com", oauth_token: "xxxxx...."
 ```
 
 ### Instance a person
 
 ```ruby
-person = Rd::Salesforce::Person.new
-person.first_name = "Jônatas"
-person.last_name = "Paganini"
-person.email = "jonatasdp@gmail.com"
+@person = Rd::Salesforce::Person.new
+@person.first_name = "Jônatas"
+@person.last_name = "Paganini"
+@person.email = "jonatasdp@gmail.com"
 ```
+
+You can see all the attributes at [person.rb](/lib/rd/salesforce/person.rb).
 
 ### Upload person to salesforce with the client
 
 ```ruby
-person.upload_to_salesforce! client
+@person.upload_to_salesforce! @client
 ```
 
 ## Setting up a different translation to salesforce fields
 
 You can manage/override the fields connection that will be sent to salesforce via managing the translate hash.
+
 
 ```ruby
 Rd::Salesforce::Person.translate = {
@@ -62,6 +67,13 @@ Rd::Salesforce::Person.translate = {
   :phone => "Phone"
 }
 ```
+
+Or simple avoid send one attribute.
+
+```ruby
+Rd::Salesforce::Person.translate.delete :job_title
+```
+
 
 ## Contributing
 
