@@ -50,7 +50,7 @@ describe Rd::Salesforce do
         expect(invalid_person).to_not be_valid
       end
       it "uploads returns true if the person is valid" do
-        expect(auth_client).to receive(:create_lead).with(person)
+        expect(auth_client).to receive(:save_lead).with(person)
         expect(person.upload_to_salesforce! auth_client)
       end
       it "do not uploads an invalid person" do

@@ -30,6 +30,8 @@ module Rd
 
 
       attr_accessor :first_name, :last_name, :email, :company, :job_title, :phone, :website
+      attr_accessor :salesforce_id
+
 
       validates :first_name, :last_name, :email, presence: true
       validates :email,  format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
