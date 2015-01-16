@@ -31,7 +31,8 @@ You can use the same [RestForce params to authentication](https://github.com/ejh
 
 
 ```ruby
-@client = Rd::Salesforce::Client.new instance_url: "https://xx.salesforce.com", oauth_token: "xxxxx...."
+@client = Rd::Salesforce::Client.new instance_url: "https://xx.salesforce.com",
+  oauth_token: "xxxxx...."
 ```
 
 ### Instance a person
