@@ -6,18 +6,22 @@ module Rd
       VALID_PARAMS = %i(oauth_token host instance_url)
       def initialize params
         raise ArgumentError.new("Invalid Params: #{params.inspect} not in #{VALID_PARAMS.inspect}") if not valid_params? params
-        @client = Restforce.new(params)
+        @api = Restforce.new(params)
       end
 
-      def create_lead(person)
+      def save_lead(person)
         if not person.valid?
           raise ArgumentError.new("can't upload an invalid record to sales force. person is invalid: #{person.inspect}\n   #{person.errors.inspect}") 
         end
-        @client.create!("Lead", person.translate_attributes)
+        if person.salesforce_id
+          @api.update!("Lead", person.salesforce_id, person.translate_attributes)
+        else
+          person.salesforce_id = @api.create!("Lead", person.translate_attributes)
+        end
       end
 
       def valid?
-        not @client.nil?
+        not @api.nil?
       end
 
       private
