@@ -7,7 +7,7 @@ Integrates with salesforce allowing to add people as leads.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rd-salesforce', git: "https://github.com/jonatas/rd-salesforce.git"
+gem 'rd-salesforce'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rd-salesforce https://github.com/jonatas/rd-salesforce.git
+    $ gem install rd-salesforce
 
 ## Usage
 
@@ -59,8 +59,8 @@ You can manage/override the fields connection that will be sent to salesforce vi
 
 ```ruby
 Rd::Salesforce::Person.translate = {
-  :first_name => "First Name",
-  :last_name => "Last Name",
+  :first_name => "FirstName",
+  :last_name => "LastName",
   :email => "Email",
   :company => "Company",
   :website => "Website",
