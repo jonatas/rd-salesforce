@@ -47,9 +47,9 @@ module Rd
       def upload_to_salesforce!(client)
         raise ArgumentError.new("client is nil") if not client
         raise ArgumentError.new("client is invalid: #{client.inspect}") if not client.valid?
-        raise ArgumentError.new("client is not a Rd::Salesforce::Client: #{client.inspect}") if not client.is_a? Rd::Salesforce::Client
+        raise ArgumentError.new("client does not respond to :save_lead method. client: #{client.inspect}") if not client.respond_to? :save_lead
 
-        client.create_lead self
+        client.save_lead self
       end
 
       ##
