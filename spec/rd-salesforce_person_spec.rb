@@ -66,9 +66,9 @@ describe Rd::Salesforce::Person do
   end
   describe "translations" do
     it "can be overrided"  do
-      Rd::Salesforce::Person.translate = {:email => "First Name"}
+      Rd::Salesforce::Person.translate = {:email => "FirstName"}
       attributes = person.translate_attributes
-      expect(attributes).to eql("First Name" => "jonatasdp@gmail.com")
+      expect(attributes).to eql("FirstName" => "jonatasdp@gmail.com")
     end
   end
   it "uploading the object to " do

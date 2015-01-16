@@ -18,8 +18,8 @@ module Rd
        cattr_accessor :translate
 
        self.translate = {
-          :first_name => "First Name",
-          :last_name => "Last Name",
+          :first_name => "FirstName",
+          :last_name => "LastName",
           :email => "Email",
           :company => "Company",
           :website => "Website",
