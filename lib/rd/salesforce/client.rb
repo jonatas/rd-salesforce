@@ -14,7 +14,7 @@ module Rd
           raise ArgumentError.new("can't upload an invalid record to sales force. person is invalid: #{person.inspect}\n   #{person.errors.inspect}") 
         end
         if person.salesforce_id
-          @api.update!("Lead", person.salesforce_id, person.translate_attributes)
+          @api.update!("Lead", person.translate_attributes.merge(Id: person.salesforce_id))
         else
           person.salesforce_id = @api.create!("Lead", person.translate_attributes)
         end
